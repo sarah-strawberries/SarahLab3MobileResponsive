@@ -3,82 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileResponsiveApp.Views.GalleryView"
              Title="Gallery">
-    <ScrollView>
-        <VerticalStackLayout>
-            <Label 
-            Text="Welcome to the Photo Gallery!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-            <CollectionView
-            ItemsSource="{Binding Items}"
-            Margin="10">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame CornerRadius="10" 
-                           Padding="10" 
-                           HasShadow="True" 
-                           Margin="5">
-                            <Grid ColumnDefinitions="Auto, *" 
-                              RowDefinitions="Auto, Auto">
-                                <Image 
-                                    Margin="5">
-                                    <VisualStateManager.VisualStateGroups>
-                                        <VisualStateGroupList>
-                                            <VisualStateGroup>
+    <VerticalStackLayout>
+        <Label 
+        Text="Welcome to the Photo Gallery!"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+        <CollectionView
+        ItemsSource="{Binding Items}"
+        Margin="10">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="10" 
+                       Padding="10" 
+                       HasShadow="True" 
+                       Margin="5">
+                        <Grid ColumnDefinitions="Auto, *" 
+                          RowDefinitions="Auto, Auto">
+                            <Image Source="{Binding ImageUrl}"
+                               WidthRequest="80"
+                               HeightRequest="80"
+                               Margin="5"/>
 
-                                                <VisualState x:Name="Phone">
-                                                    <VisualState.Setters>
-                                                        <Setter Property="Source" Value="{Binding ImageUrl, StringFormat='{0}_small.jpg'}"/>
-                                                    </VisualState.Setters>
-                                                </VisualState>
+                            <Label Text="{Binding Name}" 
+                               FontSize="18" 
+                               FontAttributes="Bold"
+                               Grid.Column="1" 
+                               VerticalOptions="Start"/>
 
-                                                <VisualState x:Name="Tablet">
-                                                    <VisualState.StateTriggers>
-                                                        <AdaptiveTrigger MinWindowWidth="450" />
-                                                    </VisualState.StateTriggers>
-                                                    <VisualState.Setters>
-                                                        <Setter Property="Source" Value="{Binding ImageUrl, StringFormat='{0}_medium.jpg'}"/>
-                                                    </VisualState.Setters>
-                                                </VisualState>
+                            <Label Text="{Binding Description}" 
+                               FontSize="14" 
+                               Grid.Column="1" Grid.Row="1" 
+                               VerticalOptions="Start"
+                               LineBreakMode="TailTruncation"/>
 
-                                                <VisualState x:Name="Desktop">
-                                                    <VisualState.StateTriggers>
-                                                        <AdaptiveTrigger MinWindowWidth="1400" />
-                                                    </VisualState.StateTriggers>
-                                                    <VisualState.Setters>
-                                                        <Setter Property="Source" Value="{Binding ImageUrl, StringFormat='{0}_large.jpg'}"/>
-                                                    </VisualState.Setters>
-                                                </VisualState>
+                            <Label Text="{Binding Price}" 
+                               FontSize="16"
+                               FontAttributes="Bold" 
+                               TextColor="Green"
+                               Grid.Column="1" Grid.Row="1" 
+                               HorizontalOptions="End"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
 
-                                            </VisualStateGroup>
-                                        </VisualStateGroupList>
-                                    </VisualStateManager.VisualStateGroups>
-                                </Image>
-
-                                <Label Text="{Binding Name}" 
-                                   FontSize="18" 
-                                   FontAttributes="Bold"
-                                   Grid.Column="1" 
-                                   VerticalOptions="Start"/>
-
-                                <Label Text="{Binding Description}" 
-                                   FontSize="14" 
-                                   Grid.Column="1" Grid.Row="1" 
-                                   VerticalOptions="Start"
-                                   LineBreakMode="TailTruncation"/>
-
-                                <Label Text="{Binding Price}" 
-                                   FontSize="16"
-                                   FontAttributes="Bold" 
-                                   TextColor="Green"
-                                   Grid.Column="1" Grid.Row="1" 
-                                   HorizontalOptions="End"/>
-                            </Grid>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-
-            </CollectionView>
-        </VerticalStackLayout>
-    </ScrollView>
+        </CollectionView>
+    </VerticalStackLayout>
 </ContentPage>
