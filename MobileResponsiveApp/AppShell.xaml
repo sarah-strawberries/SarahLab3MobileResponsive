@@ -7,9 +7,10 @@
     Shell.FlyoutBehavior="Flyout"
     Title="MobileResponsiveApp">
 
+
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Gallery"
+        ContentTemplate="{DataTemplate local:Views.GalleryView}"
+        />
 
 </Shell>
